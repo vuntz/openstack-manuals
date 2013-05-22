@@ -12,6 +12,7 @@
                     <para>Install the Quantum Server:
                         <screen os="ubuntu"><prompt>#</prompt> <userinput>apt-get install -y quantum-server</userinput></screen>
                         <screen os="centos;rhel;fedora"><prompt>#</prompt> <userinput>yum install openstack-quantum openstack-quantum-openvswitch</userinput></screen>
+                        <screen os="opensuse"><prompt>#</prompt> <userinput>zypper install openstack-quantum openstack-quantum-openvswitch</userinput></screen>
                     </para>
                 </listitem>
                 <listitem>
@@ -34,6 +35,13 @@ fake_rabbit = False
 rpc_backend=quantum.openstack.common.rpc.impl_qpid
 qpid_username = guest
 qpid_password = guest</programlisting>
+                                <programlisting os="opensuse">[DEFAULT]
+verbose = True
+rabbit_password = password
+[keystone_authtoken]
+admin_tenant_name = service
+admin_user = quantum 
+admin_password = password</programlisting>
                             </para>
                         </listitem>
                         <listitem>
@@ -90,7 +98,9 @@ admin_password = password
                     <para>Start the services:
                         <screen os="ubuntu"><prompt>#</prompt> <userinput>service quantum-server restart</userinput></screen>
                         <screen os="centos;rhel;fedora"><prompt>#</prompt> <userinput>service quantum-server restart</userinput>
-<prompt>#</prompt> <userinput>chkconfig quantum-server on</userinput></screen></para>
+<prompt>#</prompt> <userinput>chkconfig quantum-server on</userinput></screen>
+                        <screen os="opensuse"><prompt>#</prompt><userinput>systemctl restart quantum-server</userinput></screen>
+		    </para>
                 </listitem>
             </orderedlist>
         </para>

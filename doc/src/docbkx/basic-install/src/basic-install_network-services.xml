@@ -13,7 +13,10 @@
                     <screen os="ubuntu"><prompt>#</prompt> <userinput>apt-get install quantum-plugin-openvswitch-agent \
 quantum-dhcp-agent quantum-l3-agent</userinput></screen>
                     <screen os="centos;rhel;fedora"><prompt>#</prompt> <userinput>yum install openstack-quantum openstack-quantum-openvswitch\
-openvswitch-switch</userinput></screen></para>
+openvswitch-switch</userinput></screen>
+                    <screen os="opensuse"><prompt>#</prompt> <userinput>zypper install -y openstack-quantum openstack-quantum-openvswitch\
+openvswitch-switch</userinput></screen>
+		</para>
                 <para os="centos;rhel;fedora">The Open vSwitch kernel module in Fedora
                         has been compiled without tunnel support. If
                         gre tunnels and network namespaces are
@@ -28,6 +31,8 @@ openvswitch-switch</userinput></screen></para>
                     <screen os="centos;rhel;fedora"><prompt>#</prompt> <userinput>service openvswitch-switch start</userinput>
 <prompt>#</prompt> <userinput>chkconfig openvswitch-switch on</userinput></screen>
                     <screen os="ubuntu"><prompt>#</prompt> <userinput>service openvswitch-switch start</userinput></screen>
+                    <screen os="opensuse"><prompt>#</prompt> <userinput>systemctl start openvswitch-switch</userinput>
+<prompt>#</prompt> <userinput>systemctl enable openvswitch-switch</userinput></screen>
                 </para>
             </listitem>
             <listitem>
@@ -82,9 +87,13 @@ NETMASK=255.255.255.0
 NM_CONTROLLED=no
 ONBOOT=yes
 </programlisting>
-                                
+			    </para>
+			</listitem>
+                        <listitem os="opensuse">
+                            <para>
+                                TBD
                             </para>
-            </listitem>
+			</listitem>
                         <listitem>
                             <para>Remove the IP address from <literal>eth1</literal> add it to
                                         <literal>br-ex</literal>:
@@ -136,7 +145,18 @@ qpid_password = quest
 auth_host = 10.10.10.10
 admin_tenant_name = service
 admin_user = quantum 
-admin_password = password</programlisting></para>
+admin_password = password</programlisting>
+                        <programlisting os="opensuse">[DEFAULT]
+verbose = True
+rabbit_password = password
+rabbit_host = 10.10.10.10
+[keystone_authtoken]
+auth_host = 10.10.10.10
+admin_tenant_name = service
+admin_user = quantum 
+admin_password = password</programlisting>
+
+		    </para>
                 </listitem>
                 <listitem>
                     <para>Edit <emphasis role="bold">/etc/quantum/plugins/openvswitch/ovs_quantum_plugin.ini</emphasis>:
@@ -188,6 +208,14 @@ metadata_proxy_shared_secret = password
 <prompt>#</prompt> <userinput>chkconfig quantum-openvswitch-agent on</userinput>
 <prompt>#</prompt> <userinput>chkconfig quantum-dhcp-agent on</userinput>
 <prompt>#</prompt> <userinput>chkconfig quantum-l3-agent on</userinput></screen>
+                <screen os="opensuse"><prompt>#</prompt> <userinput>service quantum-server restart</userinput>
+<prompt>#</prompt> <userinput>systemctl restart quantum-openvswitch-agent</userinput>
+<prompt>#</prompt> <userinput>systemctl restart quantum-dhcp-agent</userinput>
+<prompt>#</prompt> <userinput>systemctl restart quantum-l3-agent</userinput>
+<prompt>#</prompt> <userinput>systemctl enable quantum-server</userinput>
+<prompt>#</prompt> <userinput>systemctl enable quantum-openvswitch-agent</userinput>
+<prompt>#</prompt> <userinput>systemctl enable quantum-dhcp-agent</userinput>
+<prompt>#</prompt> <userinput>systemctl enable quantum-l3-agent</userinput></screen>
             
             </para>
     <note>

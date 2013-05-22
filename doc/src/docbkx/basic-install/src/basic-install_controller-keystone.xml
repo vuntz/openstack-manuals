@@ -10,7 +10,9 @@
             <listitem>
                 <para>Install the packages:
                     <screen os="ubuntu"><prompt>#</prompt> <userinput>apt-get install -y keystone python-keystone python-keystoneclient</userinput></screen>
-                    <screen os="rhel;centos;fedora"><prompt>#</prompt> <userinput>yum install openstack-keystone python-keystone python-keystoneclient</userinput></screen></para>
+                    <screen os="rhel;centos;fedora"><prompt>#</prompt> <userinput>yum install openstack-keystone python-keystone python-keystoneclient</userinput></screen>
+                    <screen os="opensuse"><prompt>#</prompt> <userinput>zypper install openstack-keystone python-keystone python-keystoneclient</userinput></screen>
+		</para>
             </listitem>
             <listitem>
                 <para>Edit <emphasis role="bold">/etc/keystone/keystone.conf</emphasis>:
@@ -33,6 +35,8 @@ connection = mysql://keystone:password@localhost/keystone</programlisting></para
 <prompt>#</prompt> <userinput>keystone-manage db_sync</userinput>
                     </screen>
                     <screen os="rhel;centos;fedora"><prompt>#</prompt> <userinput>service openstack-keystone restart</userinput>
+<prompt>#</prompt> <userinput>openstack-db --init --service keystone </userinput></screen>
+                    <screen os="opensuse"><prompt>#</prompt> <userinput>systemctl restart openstack-keystone</userinput>
 <prompt>#</prompt> <userinput>openstack-db --init --service keystone </userinput></screen>
                     <note>
                         <para>Check the <literal>/var/log/keystone/keystone.log</literal> file for errors that would

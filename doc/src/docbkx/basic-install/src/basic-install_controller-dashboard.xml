@@ -21,6 +21,7 @@ DATABASES = {
     }
 }
 EOF</userinput></screen>
+        <screen os="opensuse"><prompt>#</prompt> <userinput>zypper install -y openstack-dashboard memcached python-python-memcache</userinput></screen>
         <note os="ubuntu">
             <para>Optional, but recommended: remove the <literal>openstack-dashboard-ubuntu-theme</literal> package. 
                 This theme prevents several menus as well as the network map from rendering correctly:
