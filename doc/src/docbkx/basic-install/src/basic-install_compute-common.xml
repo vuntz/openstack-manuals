@@ -9,7 +9,9 @@
         <orderedlist>
             <listitem>
                 <para>Install <phrase os="rhel;centos;fedora">Fedora 18</phrase>
-                    <phrase os="ubuntu">Ubuntu 12.04</phrase>. Just like with the Cloud Controller, the exact steps are outside the
+                    <phrase os="ubuntu">Ubuntu 12.04</phrase>
+		    <phrase os="opensuse">openSUSE 12.3</phrase>. 
+		    Just like with the Cloud Controller, the exact steps are outside the
                     scope of this document, but please note the following options:<itemizedlist>
                         <listitem>
                             <para>Time zone: <emphasis role="bold">UTC</emphasis></para>
@@ -35,6 +37,10 @@
                 <para os="rhel;centos;fedora">Use the Fedora repositories for Grizzly:
                     <screen><prompt>#</prompt> <userinput>wget http://repos.fedorapeople.org/repos/openstack/openstack-grizzly/fedora-openstack-grizzly.repo</userinput>
 <prompt>#</prompt> <userinput>yum install -y http://repos.fedorapeople.org/repos/openstack/openstack-grizzly/rdo-release-grizzly-1.noarch.rpm </userinput></screen>
+                </para>
+                <para os="opensuse">Use the Open Build Service repositories for Grizzly.
+                    <screen><prompt>#</prompt> <userinput>zypper ar -f
+		    http://download.opensuse.org/repositories/Cloud:/OpenStack:/Grizzly/openSUSE_12.3/Cloud:OpenStack:Grizzly.repow</userinput></screen>
                 </para>
             </listitem>
             <listitem>
@@ -94,6 +100,9 @@ ONBOOT=yes
                             </para>
                         </listitem>
                     </itemizedlist>
+		    <para os="opensuse">TODO: What needs to be done
+		    here?
+		    </para>
                     <itemizedlist>
                         <listitem>
                             <para>Edit the <emphasis role="bold">/etc/hosts</emphasis> file and add
@@ -116,6 +125,7 @@ ONBOOT=yes
                                 <para> 
                                     <screen os="ubuntu;deb"><prompt>#</prompt> <userinput>apt-get install -y ntp</userinput></screen>
                                     <screen os="rhel;fedora;centos"><prompt>#</prompt><userinput>yum install -y ntp</userinput></screen>
+                                    <screen os="opensuse"><prompt>#</prompt><userinput>zypper install -y ntp</userinput></screen>
                                 </para>
                             </listitem>
                     </itemizedlist></para>

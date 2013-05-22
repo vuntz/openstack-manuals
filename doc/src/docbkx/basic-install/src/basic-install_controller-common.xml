@@ -52,6 +52,10 @@
 <prompt>#</prompt> <userinput>mv fedora-openstack-grizzly.repo /etc/yum.repos.d/</userinput></screen>
                 </para>
                 <note  os="rhel;centos;fedora"><para>For CentOS, use http://repos.fedorapeople.org/repos/openstack/openstack-grizzly/epel-openstack-grizzly.repo.</para></note>
+                <para os="opensuse">Use the Open Build Service
+		repositories for Grizzly.
+                    <screen><prompt>#</prompt> <userinput>zypper ar -f http://download.opensuse.org/repositories/Cloud:/OpenStack:/Grizzly/openSUSE_12.3/Cloud:OpenStack:Grizzly.repo</userinput></screen>
+                </para>
             </listitem>
             <listitem>
                 <para>Configure the network:</para>
@@ -130,6 +134,9 @@ ONBOOT=yes
 </programlisting>
                                 
                             </para>
+			    <para os="opensuse">
+			      TODO: What network setup is needed?
+			    </para>
                         </listitem>
                         <listitem>
                         <para os="rhel;centos;fedora">
@@ -169,6 +176,7 @@ ONBOOT=yes
                             <para> 
                                 <screen os="ubuntu;deb"><prompt>#</prompt> <userinput>apt-get install -y ntp</userinput></screen>
                                 <screen os="rhel;fedora;centos"><prompt>#</prompt> <userinput>yum install -y ntp</userinput></screen>
+                                <screen os="opensuse"><prompt>#</prompt> <userinput>zypper install -y ntp</userinput></screen>
                             </para>
                         </listitem>
                     </itemizedlist>
@@ -186,6 +194,7 @@ ONBOOT=yes
                 <listitem>
                     <para>Install the packages: <screen os="ubuntu;deb"><prompt>#</prompt> <userinput>apt-get install -y python-mysqldb mysql-server</userinput></screen>
                         <screen os="rhel;fedora;centos"><prompt>#</prompt> <userinput>yum install mysql mysql-server MySQL-python</userinput></screen>
+                        <screen os="opensuse"><prompt>#</prompt> <userinput>zypper install mysql-community-server-client mysql-community-server python-mysql</userinput></screen>
                         <note os="ubuntu;deb">
                             <para><literal>apt-get</literal> will
                                 prompt you to set the MySQL root
@@ -201,12 +210,15 @@ ONBOOT=yes
                         requests for the OpenStack Compute service are
                         proxied through the
                             <literal>nova-conductor</literal> service. <screen os="ubuntu"><prompt>#</prompt> <userinput>sed -i 's/127.0.0.1/0.0.0.0/g' /etc/mysql/my.cnf</userinput></screen>
-                        <screen os="rhel;fedora;centos"><prompt>#</prompt> <userinput>sed -i 's/127.0.0.1/0.0.0.0/g' /etc/my.cnf</userinput></screen></para>
+                        <screen os="rhel;fedora;centos"><prompt>#</prompt> <userinput>sed -i 's/127.0.0.1/0.0.0.0/g' /etc/my.cnf</userinput></screen>
+                        <screen os="opensuse"><prompt>#</prompt> <userinput>sed -i 's/127.0.0.1/0.0.0.0/g' /etc/my.cnf</userinput></screen></para>
                 </listitem>
                 <listitem>
                     <para>Restart the service: <screen os="ubuntu;deb"><prompt>#</prompt> <userinput>service mysql restart</userinput></screen>
                         <screen os="rhel;fedora;centos"><prompt>#</prompt> <userinput>systemctl start mysqld.service</userinput></screen>
-                        <screen os="rhel;fedora;centos"><prompt>#</prompt> <userinput>chkconfig mysqld on</userinput></screen></para>
+                        <screen os="rhel;fedora;centos"><prompt>#</prompt> <userinput>chkconfig mysqld on</userinput></screen>
+                        <screen os="opensuse"><prompt>#</prompt> <userinput>systemctl start mysqld.service</userinput></screen>
+                        <screen os="opensuse"><prompt>#</prompt> <userinput>chkconfig mysqld on</userinput></screen></para>
                 </listitem>
                 <listitem>
                     <para>The various databases that the OpenStack
@@ -241,7 +253,8 @@ EOF</userinput></screen></para>
             </section>
             <section xml:id="controller-rabbitmq">
                 <title> <phrase os="rhel;centos;fedora">Qpid</phrase>
-                    <phrase os="ubuntu">RabbitMQ</phrase> Messaging Service</title>
+                    <phrase os="ubuntu">RabbitMQ</phrase> 
+		    <phrase os="opensuse">RabbitMQ</phrase> Messaging Service</title>
                 <para>The OpenStack components also communicate through a queuing service. For example, the Cloud Controller
                     places a request to launch an instance on the queue. The Compute Node then picks this request up
                     and launches the instance. OpenStack can work with several different queuing services. 
@@ -250,6 +263,7 @@ EOF</userinput></screen></para>
                     <para>Install the packages:
                         <screen os="ubuntu;deb"><prompt>#</prompt> <userinput>apt-get install -y rabbitmq-server</userinput></screen>
                         <screen os="rhel;fedora;centos"><prompt>#</prompt> <userinput>yum install qpid-cpp-server</userinput></screen>
+                        <screen os="opensuse"><prompt>#</prompt> <userinput>zypper install rabbitmq-server</userinput></screen>
                     </para>
                     </listitem>
                     <listitem>
@@ -265,6 +279,8 @@ EOF</userinput></screen></para>
                         <para os="rhel;fedora;centos">Enable authentication:
                             <screen os="rhel;fedora;centos"><prompt>#</prompt> <userinput>echo auth=1 >> /etc/qpidd.conf</userinput></screen>                        
                         </para>
+			<para os="opensuse">TODO: What needs to be done here?
+			</para>
                     </listitem>
                     <listitem os="rhel;fedora;centos">
                         <para>Enable the messaging service:</para>
@@ -273,6 +289,14 @@ EOF</userinput></screen></para>
                     <listitem  os="rhel;fedora;centos">
                         <para>Start the messaging service:</para>
                         <screen><prompt>#</prompt> <userinput>service qpidd start</userinput></screen>
+                    </listitem>
+                    <listitem os="opensuse">
+                        <para>Enable the messaging service:</para>
+                        <screen><prompt>#</prompt> <userinput>chkconfig rabbitmq on</userinput></screen>
+                    </listitem>
+                    <listitem  os="opensuse">
+                        <para>Start the messaging service:</para>
+                        <screen><prompt>#</prompt> <userinput>systemctl start rabbitmq.service</userinput></screen>
                     </listitem>
                 </orderedlist>
             </para>

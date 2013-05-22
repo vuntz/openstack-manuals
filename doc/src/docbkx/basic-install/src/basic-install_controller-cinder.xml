@@ -17,6 +17,8 @@
     open-iscsi iscsitarget-dkms python-cinderclient linux-headers-`uname -r`</userinput></screen>
                     <screen os="centos;rhel;fedora"><prompt>#</prompt> <userinput>yum install -y openstack-cinder openstack-cinder-doc \
         iscsi-initiator-utils scsi-target-utils</userinput></screen>
+                    <screen os="opensuse"><prompt>#</prompt> <userinput>zypper install -y openstack-cinder openstack-cinder-doc \
+        iscsi-initiator-utils scsi-target-utils</userinput></screen>
                 </para>
             </listitem>
             <listitem>
@@ -26,7 +28,14 @@
                     <screen os="centos;rhel;fedora"><prompt>#</prompt> <userinput>service tgtd start</userinput>
 <prompt>#</prompt> <userinput>service iscsi start</userinput>
 <prompt>#</prompt> <userinput>chkconfig tgtd on</userinput>
-<prompt>#</prompt> <userinput>chkconfig iscsi on</userinput></screen></para>
+<prompt>#</prompt> <userinput>chkconfig iscsi on</userinput></screen>
+                    <screen os="opensuse"><prompt>#</prompt><userinput>systemctl start tgtd start</userinput>
+<prompt>#</prompt> <userinput>systemctl start iscsi</userinput>
+<prompt>#</prompt> <userinput>systemctl enable tgtd</userinput>
+<prompt>#</prompt> <userinput>systemctl enable iscsi</userinput></screen>
+
+
+		</para>
             </listitem>
             <listitem>
                 <para>Configure Cinder:</para>
@@ -61,7 +70,24 @@ service_host = localhost
 service_port = 5000
 auth_host = localhost
 auth_port = 35357
-auth_protocol = http</programlisting></para>
+auth_protocol = http</programlisting>
+<programlisting os="opensuse">[DEFAULT]
+rpc_backend = cinder.openstack.common.rpc.impl_qpid
+sql_connection = mysql://cinder:password@localhost/cinder
+qpid_user = guest
+qpid_password = quest
+
+[keystone_authtoken]
+admin_tenant_name = service
+admin_user = cinder 
+admin_password = password
+service_protocol = http
+service_host = localhost
+service_port = 5000
+auth_host = localhost
+auth_port = 35357
+auth_protocol = http</programlisting>
+			</para>
                     </listitem>
                     <listitem>
                         <para>Edit <filename>/etc/cinder/api-paste.ini</filename> in the
@@ -95,7 +121,14 @@ paste.filter_factory = keystone.middleware.auth_token:filter_factory
 <prompt>#</prompt> <userinput>service openstack-cinder-volume restart</userinput>
 <prompt>#</prompt> <userinput>chkconfig openstack-cinder-api on</userinput>
 <prompt>#</prompt> <userinput>chkconfig openstack-cinder-scheduler on</userinput>
-<prompt>#</prompt> <userinput>chkconfig openstack-cinder-volume on</userinput></screen></para>
+<prompt>#</prompt> <userinput>chkconfig openstack-cinder-volume on</userinput></screen>
+                            <screen os="opensuse"><prompt>#</prompt> <userinput>systemctl restart openstack-cinder-api</userinput>
+<prompt>#</prompt> <userinput>systemctl restart openstack-cinder-scheduler</userinput>
+<prompt>#</prompt> <userinput>systemctl restart openstack-cinder-volume</userinput>
+<prompt>#</prompt> <userinput>systemctl enable openstack-cinder-api</userinput>
+<prompt>#</prompt> <userinput>systemctl enable openstack-cinder-scheduler</userinput>
+<prompt>#</prompt> <userinput>systemctl enable openstack-cinder-volume</userinput></screen></para>
+
                     </listitem>
                 </itemizedlist>
             </listitem>
