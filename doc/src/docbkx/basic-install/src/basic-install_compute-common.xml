@@ -40,7 +40,7 @@
                 </para>
                 <para os="opensuse">Use the Open Build Service repositories for Grizzly.
                     <screen><prompt>#</prompt> <userinput>zypper ar -f
-		    http://download.opensuse.org/repositories/Cloud:/OpenStack:/Grizzly/openSUSE_12.3/Cloud:OpenStack:Grizzly.repow</userinput></screen>
+		    http://download.opensuse.org/repositories/Cloud:/OpenStack:/Grizzly/openSUSE_12.3/Cloud:OpenStack:Grizzly.repo</userinput></screen>
                 </para>
             </listitem>
             <listitem>
