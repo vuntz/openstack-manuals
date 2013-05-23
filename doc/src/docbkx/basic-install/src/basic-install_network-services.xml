@@ -208,7 +208,7 @@ metadata_proxy_shared_secret = password
 <prompt>#</prompt> <userinput>chkconfig quantum-openvswitch-agent on</userinput>
 <prompt>#</prompt> <userinput>chkconfig quantum-dhcp-agent on</userinput>
 <prompt>#</prompt> <userinput>chkconfig quantum-l3-agent on</userinput></screen>
-                <screen os="opensuse"><prompt>#</prompt> <userinput>service quantum-server restart</userinput>
+                <screen os="opensuse"><prompt>#</prompt> <userinput>systemctl restart quantum-server</userinput>
 <prompt>#</prompt> <userinput>systemctl restart quantum-openvswitch-agent</userinput>
 <prompt>#</prompt> <userinput>systemctl restart quantum-dhcp-agent</userinput>
 <prompt>#</prompt> <userinput>systemctl restart quantum-l3-agent</userinput>

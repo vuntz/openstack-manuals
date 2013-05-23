@@ -80,7 +80,7 @@ firewall_driver = quantum.agent.linux.iptables_firewall.OVSHybridIptablesFirewal
                             <screen os="ubuntu"><prompt>#</prompt> <userinput>service quantum-plugin-openvswitch-agent restart</userinput></screen>
                             <screen os="centos;rhel;fedora"><userinput>service quantum-openvswitch-agent restart</userinput>
 <prompt>#</prompt> <userinput>chkconfig quantum-openvswitch-agent on</userinput></screen>
-                            <screen os="opensuse"><userinput>systemctl restart quantum-openvswitch-agent</userinput>
+                            <screen os="opensuse"><prompt>#</prompt> <userinput>systemctl restart quantum-openvswitch-agent</userinput>
 <prompt>#</prompt> <userinput>systemctl enable quantum-openvswitch-agent</userinput></screen>
                         </para>
                     </listitem>

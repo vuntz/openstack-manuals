@@ -132,7 +132,9 @@ vncserver_listen=0.0.0.0</programlisting>
                                     <screen os="ubuntu"><prompt>#</prompt> <userinput>service nova-compute restart</userinput></screen>
                                     <screen os="centos;rhel;fedora"><prompt>#</prompt> <userinput>service openstack-nova-compute restart</userinput>
 <prompt>#</prompt> <userinput>chkconfig openstack-nova-compute on</userinput></screen>
-                                    <screen os="opensuse"><prompt>#</prompt> <userinput>systemctl restart nova-compute</userinput></screen>
+                                    <screen os="opensuse"><prompt>#</prompt> <userinput>systemctl restart nova-compute</userinput>
+<prompt>#</prompt> <userinput>systemctl enable openstack-nova-compute</userinput>
+</screen>
                                 </para>
                             </listitem>
                         </itemizedlist>

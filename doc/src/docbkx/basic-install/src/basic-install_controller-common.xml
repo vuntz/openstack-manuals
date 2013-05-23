@@ -218,7 +218,7 @@ ONBOOT=yes
                         <screen os="rhel;fedora;centos"><prompt>#</prompt> <userinput>systemctl start mysqld.service</userinput></screen>
                         <screen os="rhel;fedora;centos"><prompt>#</prompt> <userinput>chkconfig mysqld on</userinput></screen>
                         <screen os="opensuse"><prompt>#</prompt> <userinput>systemctl start mysqld.service</userinput></screen>
-                        <screen os="opensuse"><prompt>#</prompt> <userinput>chkconfig mysqld on</userinput></screen></para>
+                        <screen os="opensuse"><prompt>#</prompt> <userinput>systemctl enable mysqld.service</userinput></screen></para>
                 </listitem>
                 <listitem>
                     <para>The various databases that the OpenStack
@@ -292,7 +292,7 @@ EOF</userinput></screen></para>
                     </listitem>
                     <listitem os="opensuse">
                         <para>Enable the messaging service:</para>
-                        <screen><prompt>#</prompt> <userinput>chkconfig rabbitmq on</userinput></screen>
+                        <screen><prompt>#</prompt> <userinput>systemctl enable rabbitmq.service</userinput></screen>
                     </listitem>
                     <listitem  os="opensuse">
                         <para>Start the messaging service:</para>
