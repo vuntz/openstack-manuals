@@ -29,7 +29,7 @@
 <prompt>#</prompt> <userinput>service iscsi start</userinput>
 <prompt>#</prompt> <userinput>chkconfig tgtd on</userinput>
 <prompt>#</prompt> <userinput>chkconfig iscsi on</userinput></screen>
-                    <screen os="opensuse"><prompt>#</prompt><userinput>systemctl start tgtd start</userinput>
+                    <screen os="opensuse"><prompt>#</prompt> <userinput>systemctl start tgtd start</userinput>
 <prompt>#</prompt> <userinput>systemctl start iscsi</userinput>
 <prompt>#</prompt> <userinput>systemctl enable tgtd</userinput>
 <prompt>#</prompt> <userinput>systemctl enable iscsi</userinput></screen>
