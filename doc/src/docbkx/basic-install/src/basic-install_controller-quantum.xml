@@ -100,7 +100,7 @@ admin_password = password
                         <screen os="ubuntu"><prompt>#</prompt> <userinput>service quantum-server restart</userinput></screen>
                         <screen os="centos;rhel;fedora"><prompt>#</prompt> <userinput>service quantum-server restart</userinput>
 <prompt>#</prompt> <userinput>chkconfig quantum-server on</userinput></screen>
-                        <screen os="opensuse"><prompt>#</prompt><userinput>systemctl restart quantum-server</userinput></screen>
+                        <screen os="opensuse"><prompt>#</prompt> <userinput>systemctl restart quantum-server</userinput></screen>
 		    </para>
                 </listitem>
             </orderedlist>
