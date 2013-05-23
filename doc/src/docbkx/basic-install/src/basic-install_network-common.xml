@@ -164,8 +164,8 @@ ONBOOT=yes
                         <listitem>
                                 <para> 
                                     <screen os="ubuntu;deb"><prompt>#</prompt> <userinput>apt-get install -y ntp</userinput></screen>
-                                    <screen os="rhel;fedora;centos"><prompt>#</prompt><userinput>yum install -y ntp</userinput></screen>
-                                    <screen os="opensuse"><prompt>#</prompt><userinput>zypper install -y ntp</userinput></screen>
+                                    <screen os="rhel;fedora;centos"><prompt>#</prompt> <userinput>yum install -y ntp</userinput></screen>
+                                    <screen os="opensuse"><prompt>#</prompt> <userinput>zypper install -y ntp</userinput></screen>
                                 </para>
                         </listitem>
                     </itemizedlist></para>
