@@ -17,7 +17,7 @@
     open-iscsi iscsitarget-dkms python-cinderclient linux-headers-`uname -r`</userinput></screen>
                     <screen os="centos;rhel;fedora"><prompt>#</prompt> <userinput>yum install openstack-cinder openstack-cinder-doc \
         iscsi-initiator-utils scsi-target-utils</userinput></screen>
-                    <screen os="opensuse"><prompt>#</prompt> <userinput>zypper install -y openstack-cinder openstack-cinder-doc \
+                    <screen os="opensuse"><prompt>#</prompt> <userinput>zypper install openstack-cinder openstack-cinder-doc \
         iscsi-initiator-utils scsi-target-utils</userinput></screen>
                 </para>
             </listitem>

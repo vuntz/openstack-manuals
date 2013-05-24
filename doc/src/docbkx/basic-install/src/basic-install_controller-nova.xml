@@ -15,7 +15,7 @@
                             <screen os="centos;rhel;fedora"><prompt>#</prompt> <userinput>yum install openstack-nova-api openstack-nova-scheduler openstack-nova-cert \
         openstack-nova-console openstack-nova-doc genisoimage openstack-dashboard \
         openstack-nova-novncproxy openstack-nova-conductor novnc</userinput></screen>
-                            <screen os="opensuse"><prompt>#</prompt> <userinput>zypper install -y openstack-nova-api openstack-nova-scheduler openstack-nova-cert \
+                            <screen os="opensuse"><prompt>#</prompt> <userinput>zypper install openstack-nova-api openstack-nova-scheduler openstack-nova-cert \
         openstack-nova-console openstack-nova-doc genisoimage openstack-dashboard \
         openstack-nova-novncproxy openstack-nova-conductor novnc</userinput></screen>
                         </para>
