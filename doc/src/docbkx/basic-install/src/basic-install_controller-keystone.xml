@@ -10,8 +10,9 @@
             <listitem>
                 <para>Install the packages:
                     <screen os="ubuntu"><prompt>#</prompt> <userinput>apt-get install keystone python-keystone python-keystoneclient</userinput></screen>
-                    <screen os="rhel;centos;fedora"><prompt>#</prompt> <userinput>yum install openstack-keystone python-keystone python-keystoneclient</userinput></sc                    <screen os="opensuse"><prompt>#</prompt> <userinput>zypper install openstack-keystone python-keystone python-keystoneclient</userinput></screen>
-reen></para>
+                    <screen os="rhel;centos;fedora"><prompt>#</prompt> <userinput>yum install openstack-keystone python-keystone python-keystoneclient</userinput></screen>
+		    <screen os="opensuse"><prompt>#</prompt> <userinput>zypper install openstack-keystone python-keystone python-keystoneclient</userinput></screen>
+		</para>
             </listitem>
             <listitem>
                 <para>Edit <emphasis role="bold">/etc/keystone/keystone.conf</emphasis>:
