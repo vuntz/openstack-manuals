@@ -10,7 +10,7 @@
             <orderedlist>
                 <listitem>
                     <para>Install the Quantum Server:
-                        <screen os="ubuntu"><prompt>#</prompt> <userinput>apt-get install -y quantum-server</userinput></screen>
+                        <screen os="ubuntu"><prompt>#</prompt> <userinput>apt-get install quantum-server</userinput></screen>
                         <screen os="centos;rhel;fedora"><prompt>#</prompt> <userinput>yum install openstack-quantum openstack-quantum-openvswitch</userinput></screen>
                         <screen os="opensuse"><prompt>#</prompt> <userinput>zypper install openstack-quantum openstack-quantum-openvswitch</userinput></screen>
                     </para>
@@ -66,7 +66,7 @@ firewall_driver = quantum.agent.linux.iptables_firewall.OVSHybridIptablesFirewal
                                <emphasis role="bold">tunnel mode</emphasis> since you don't
                                have to configure your physical
                                switches for VLANs.</para>
-                                <para os="centos;rhel;fedora">The Fedora kernel module for OpenVSwitch has been compiles with out support for tunnels. To use gre tunnels the module will have to be recompiled.</para>
+                                <para os="centos;rhel;fedora">The Fedora kernel module for OpenVSwitch has been compiled without support for tunnels. To use gre tunnels the module will have to be recompiled.</para>
 				<para os="opensuse">TBD</para>
                             </note>
                         </listitem>
