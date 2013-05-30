@@ -14,7 +14,7 @@
 quantum-dhcp-agent quantum-l3-agent</userinput></screen>
                     <screen os="centos;rhel;fedora"><prompt>#</prompt> <userinput>yum install openstack-quantum openstack-quantum-openvswitch\
 openvswitch-switch</userinput></screen>
-                    <screen os="opensuse"><prompt>#</prompt> <userinput>zypper install openstack-quantum openstack-quantum-openvswitch\
+                    <screen os="opensuse"><prompt>#</prompt> <userinput>zypper install openstack-quantum openstack-quantum-openvswitch-agent\
 openvswitch-switch</userinput></screen>
 		</para>
                 <para os="centos;rhel;fedora">The Open vSwitch kernel module in Fedora

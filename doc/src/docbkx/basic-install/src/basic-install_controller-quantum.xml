@@ -12,7 +12,7 @@
                     <para>Install the Quantum Server:
                         <screen os="ubuntu"><prompt>#</prompt> <userinput>apt-get install quantum-server</userinput></screen>
                         <screen os="centos;rhel;fedora"><prompt>#</prompt> <userinput>yum install openstack-quantum openstack-quantum-openvswitch</userinput></screen>
-                        <screen os="opensuse"><prompt>#</prompt> <userinput>zypper install openstack-quantum openstack-quantum-openvswitch</userinput></screen>
+                        <screen os="opensuse"><prompt>#</prompt> <userinput>zypper install openstack-quantum</userinput></screen>
                     </para>
                 </listitem>
                 <listitem>
@@ -100,7 +100,7 @@ admin_password = password
                         <screen os="ubuntu"><prompt>#</prompt> <userinput>service quantum-server restart</userinput></screen>
                         <screen os="centos;rhel;fedora"><prompt>#</prompt> <userinput>service quantum-server restart</userinput>
 <prompt>#</prompt> <userinput>chkconfig quantum-server on</userinput></screen>
-                        <screen os="opensuse"><prompt>#</prompt> <userinput>systemctl restart quantum-server</userinput></screen>
+                        <screen os="opensuse"><prompt>#</prompt> <userinput>systemctl restart openstack-quantum</userinput></screen>
 		    </para>
                 </listitem>
             </orderedlist>

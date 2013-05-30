@@ -38,9 +38,8 @@
                     <screen><prompt>#</prompt> <userinput>wget http://repos.fedorapeople.org/repos/openstack/openstack-grizzly/fedora-openstack-grizzly.repo</userinput>
 <prompt>#</prompt> <userinput>yum install http://repos.fedorapeople.org/repos/openstack/openstack-grizzly/rdo-release-grizzly-1.noarch.rpm </userinput></screen>
                 </para>
-                <para os="opensuse">Use the Open Build Service repositories for Grizzly.
-                    <screen><prompt>#</prompt> <userinput>zypper ar -f
-		    http://download.opensuse.org/repositories/Cloud:/OpenStack:/Grizzly/openSUSE_12.3/Cloud:OpenStack:Grizzly.repo</userinput></screen>
+                <para os="opensuse">Use the Open Build Service repositories for Grizzly:
+                    <screen><prompt>#</prompt> <userinput>zypper ar -f http://download.opensuse.org/repositories/Cloud:/OpenStack:/Grizzly/openSUSE_12.3/Cloud:OpenStack:Grizzly.repo</userinput></screen>
                 </para>
             </listitem>
             <listitem>

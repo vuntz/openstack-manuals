@@ -18,7 +18,7 @@
                     <screen os="centos;rhel;fedora"><prompt>#</prompt> <userinput>yum install openstack-cinder openstack-cinder-doc \
         iscsi-initiator-utils scsi-target-utils</userinput></screen>
                     <screen os="opensuse"><prompt>#</prompt> <userinput>zypper install openstack-cinder openstack-cinder-doc \
-        iscsi-initiator-utils scsi-target-utils</userinput></screen>
+        open-iscsi iscsitarget</userinput></screen>
                 </para>
             </listitem>
             <listitem>
@@ -29,10 +29,10 @@
 <prompt>#</prompt> <userinput>service iscsi start</userinput>
 <prompt>#</prompt> <userinput>chkconfig tgtd on</userinput>
 <prompt>#</prompt> <userinput>chkconfig iscsi on</userinput></screen>
-                    <screen os="opensuse"><prompt>#</prompt> <userinput>systemctl start tgtd start</userinput>
-<prompt>#</prompt> <userinput>systemctl start iscsi</userinput>
+                    <screen os="opensuse"><prompt>#</prompt> <userinput>systemctl start tgtd</userinput>
+<prompt>#</prompt> <userinput>systemctl start iscsid</userinput>
 <prompt>#</prompt> <userinput>systemctl enable tgtd</userinput>
-<prompt>#</prompt> <userinput>systemctl enable iscsi</userinput></screen>
+<prompt>#</prompt> <userinput>systemctl enable iscsid</userinput></screen>
 
 
 		</para>
@@ -72,10 +72,8 @@ auth_host = localhost
 auth_port = 35357
 auth_protocol = http</programlisting>
 <programlisting os="opensuse">[DEFAULT]
-rpc_backend = cinder.openstack.common.rpc.impl_qpid
 sql_connection = mysql://cinder:password@localhost/cinder
-qpid_user = guest
-qpid_password = quest
+rabbit_password = password
 
 [keystone_authtoken]
 admin_tenant_name = service

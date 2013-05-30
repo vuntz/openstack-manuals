@@ -9,7 +9,8 @@
         <orderedlist>
             <listitem>
                 <para>Install <phrase os="rhel;centos;fedora">Fedora 18</phrase>
-                    <phrase os="ubuntu">Ubuntu 12.04 or 13.04</phrase>. 
+                    <phrase os="ubuntu">Ubuntu 12.04 or 13.04</phrase>
+                    <phrase os="opensuse">openSUSE 12.3</phrase>. 
                     The exact installation procedure is outside the scope of 
                     this document, but please note the following 
                     configurations:
@@ -53,7 +54,7 @@
                 </para>
                 <note  os="rhel;centos;fedora"><para>For CentOS, use http://repos.fedorapeople.org/repos/openstack/openstack-grizzly/epel-openstack-grizzly.repo.</para></note>
                 <para os="opensuse">Use the Open Build Service
-		repositories for Grizzly.
+		repositories for Grizzly:
                     <screen><prompt>#</prompt> <userinput>zypper ar -f http://download.opensuse.org/repositories/Cloud:/OpenStack:/Grizzly/openSUSE_12.3/Cloud:OpenStack:Grizzly.repo</userinput></screen>
                 </para>
             </listitem>
@@ -134,9 +135,6 @@ ONBOOT=yes
 </programlisting>
                                 
                             </para>
-			    <para os="opensuse">
-			      TODO: What network setup is needed?
-			    </para>
                         </listitem>
                         <listitem>
                         <para os="rhel;centos;fedora">
@@ -144,6 +142,9 @@ ONBOOT=yes
                         </para>
                         </listitem>
                     </itemizedlist>
+                </para>
+                <para os="opensuse">
+                    TODO: What network setup is needed?
                 </para>
                 <para>
                     <itemizedlist>
@@ -215,10 +216,10 @@ ONBOOT=yes
                 </listitem>
                 <listitem>
                     <para>Restart the service: <screen os="ubuntu;deb"><prompt>#</prompt> <userinput>service mysql restart</userinput></screen>
-                        <screen os="rhel;fedora;centos"><prompt>#</prompt> <userinput>systemctl start mysqld.service</userinput></screen>
+                        <screen os="rhel;fedora;centos"><prompt>#</prompt> <userinput>systemctl start mysqld</userinput></screen>
                         <screen os="rhel;fedora;centos"><prompt>#</prompt> <userinput>chkconfig mysqld on</userinput></screen>
-                        <screen os="opensuse"><prompt>#</prompt> <userinput>systemctl start mysqld.service</userinput></screen>
-                        <screen os="opensuse"><prompt>#</prompt> <userinput>systemctl enable mysqld.service</userinput></screen></para>
+                        <screen os="opensuse"><prompt>#</prompt> <userinput>systemctl start mysql</userinput></screen>
+                        <screen os="opensuse"><prompt>#</prompt> <userinput>systemctl enable mysql</userinput></screen></para>
                 </listitem>
                 <listitem>
                     <para>The various databases that the OpenStack
@@ -279,7 +280,14 @@ EOF</userinput></screen></para>
                         <para os="rhel;fedora;centos">Enable authentication:
                             <screen os="rhel;fedora;centos"><prompt>#</prompt> <userinput>echo auth=1 >> /etc/qpidd.conf</userinput></screen>                        
                         </para>
-			<para os="opensuse">TODO: What needs to be done here?
+			<para os="opensuse">Change the default password:
+                            <screen os="opensuse"><prompt>#</prompt> <userinput>rabbitmqctl change_password guest password</userinput></screen>
+                            <note>
+                                <para>In addition to choosing another password in a production environment, you should also
+                                    disable the guest account and use a proper RabbitMQ account. Please see the RabbitMQ
+                                    documentation for further details.
+                                </para>
+                            </note>
 			</para>
                     </listitem>
                     <listitem os="rhel;fedora;centos">
@@ -292,11 +300,11 @@ EOF</userinput></screen></para>
                     </listitem>
                     <listitem os="opensuse">
                         <para>Enable the messaging service:</para>
-                        <screen><prompt>#</prompt> <userinput>systemctl enable rabbitmq.service</userinput></screen>
+                        <screen><prompt>#</prompt> <userinput>systemctl enable rabbitmq-server</userinput></screen>
                     </listitem>
                     <listitem  os="opensuse">
                         <para>Start the messaging service:</para>
-                        <screen><prompt>#</prompt> <userinput>systemctl start rabbitmq.service</userinput></screen>
+                        <screen><prompt>#</prompt> <userinput>systemctl start rabbitmq-server</userinput></screen>
                     </listitem>
                 </orderedlist>
             </para>
